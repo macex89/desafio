@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+
+  backend:
+    image: kikohernandez92/javoserver:91
+      - 3001:3001
+    networks:
+      - localnet
+    #volumes:
+    #  - /tmp/back:/usr/src/app
+    depends_on:
+      - db
+
+  frontend:
+    image: kikohernandez92/javoclient:83
+    ports: 
+      - 3000:80
+    networks:
+      - localnet
+    #volumes:
+    #  - /tmp/front:/usr/src/app
+    depends_on:
+      - backend
+  
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - localnet
+
+  dbmanager:
+    image: adminer
+    ports:
+      - 8085:8080
+    networks:
+      - localnet
+
+networks:
+  localnet:
+    driver: overlay
