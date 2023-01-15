@@ -1,0 +1,102 @@
+.contenedor {
+    margin: 0 auto;
+    display: flex;
+    justify-content: ce;
+    margin-top: 5px;
+    width: 170px;
+    height: 11px;
+    border: none;
+
+}
+
+.barra {
+    display: flex;
+    align-items: center;
+    width: 170px;
+    height: 11px;
+
+    -webkit-animation: progreso 3s linear infinite;
+    animation: progreso 3s linear infinite;
+
+    background: #F5333F;
+    border-radius: 20px;
+}
+
+.statusBar2{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 160px;
+    height: 38.19;
+  
+}
+
+.divLoading{
+    margin-top: 300px;
+}
+
+
+
+@-webkit-keyframes progreso {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes progreso {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes porcentaje {
+    0% {
+        content: '0%';
+    }
+
+    25% {
+        content: '25%';
+    }
+
+    50% {
+        content: '50%';
+    }
+
+    75% {
+        content: '75%';
+    }
+
+    100% {
+        content: '100%';
+    }
+}
+
+@keyframes porcentaje {
+    0% {
+        content: '0%';
+    }
+
+    25% {
+        content: '25%';
+    }
+
+    50% {
+        content: '50%';
+    }
+
+    75% {
+        content: '75%';
+    }
+
+    100% {
+        content: '100%';
+    }
+}

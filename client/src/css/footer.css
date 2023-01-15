@@ -1,0 +1,51 @@
+
+.footerC{
+    height: 194px;
+    background-color: #BEBEBE;
+    
+    bottom: 0;
+}
+
+.footerC p{
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.pdif{
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    margin-left: -18px;
+}
+.imgbarra{
+    height: 15px;
+    margin: 0 auto;
+}
+
+
+
+   .divFooter{
+    margin: 0 auto;
+    width: 100%;
+    width: 380px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+    
+   }
+
+   .divFooA{
+    display: flex;
+    justify-content: center;
+   }
+
+   .divFooA a{
+    color: white;
+   }
+
+   .divFooter p img{
+    margin-top:7px;
+   }
