@@ -1,54 +1,75 @@
-import React from 'react'
-import logo from '../img/logo.png'
-import logoApple from '../img/logoApple.png'
-import logoFacebook from '../img/logoFacebook.png'
-import logoGoogle from '../img/logoGoogle.png'
-import statusBar from '../img/statusBar.png'
-import rectangle from '../img/rectangle.png'
-
-
-
+import {React, useState} from 'react';
+import Cookies from 'universal-cookie';
+import checkDni from '../helper/ValidationDni';
+import checkNotAllChar from '../helper/ValidationNotAllChar';
+import logo from '../img/logo.png';
+import logoApple from '../img/logoApple.png';
+import logoFacebook from '../img/logoFacebook.png';
+import logoGoogle from '../img/logoGoogle.png';
+import statusBar from '../img/statusBar.png';
+import rectangle from '../img/rectangle.png';
+import { NavLink, useNavigate } from "react-router-dom";
 
 export const FormLogin = () => {
-
+    const navigate = useNavigate();
+    const cookies = new Cookies();
+    const [msn,setMsn] = useState();
+    
     const loginUser = async e => {
-
         e.preventDefault();
+        const cleanDni = checkNotAllChar(e.target.docUser.value);
+        const cleanPass = checkNotAllChar(e.target.passwordUser.value);
+        if (cleanDni && cleanPass){
+            switch (e.target.documents.value) {
+                case "dni":
+                    var {validation, message } = checkDni(e.target.docUser.value);
+                    break;
+                case "pasaporte":
+                    var {validation, message} = {validation:false,message:""};
+                    break;
+                case "nie":
+                    var {validation, message} = {validation:false,message:""};
+                    break;
+                default:
+                    var {validation, message} = {validation:false,message: "El tipo de documento elegido no es correcto"};
+            }
 
-        let loginDates = {
-            dniUser: e.target.dniUser.value,
-            passwordUser: e.target.passwordUser.value
+            if (validation){
+                let loginData = {
+                    num_doc: e.target.docUser.value,
+                    contraseña: e.target.passwordUser.value,
+                }
+
+                let Metadatos = {
+                    method: 'POST',
+                    body: JSON.stringify(loginData),
+                    mode: "cors",
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Content-type": "application/json",
+                    },
+                };
+                await fetch("/login-user", Metadatos)
+                    .then((response) => response.json())
+                    .then((response) => {
+                        if (response.validation){
+                            cookies.set('session', response.jwt, { path: '/' });
+                            navigate(`/loading/${btoa(response.user.rol)}`);
+                        }else {
+                            setMsn(response.message);
+                        }
+                })
+             }else {
+                setMsn(message);
+             }
         }
-
-
-        let Metadatos = {
-            method: 'POST',
-            body: JSON.stringify(loginDates),
-            mode: "cors",
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Content-type": "application/json",
-            },
-        };
-
-
-        fetch("http://localhost:5000/login", Metadatos)
-            .then((response) => response.json())
-            .then((response) => {
-                console.log(response)
-
-            })
     }
 
-
-
     return (
-
         <div className='formLogin'>
-
-            <div>
+            {/* <div>
                 <img src={statusBar} className='statusBar' alt="" />
-            </div>
+            </div> */}
             <img src={logo} className='imgLogin' alt="" />
 
             <form className='formUser' onSubmit={loginUser}>
@@ -56,13 +77,13 @@ export const FormLogin = () => {
                 <div className='typeDocuments'>
                     <select name="documents" className='selectDocuments'>
                         <option value="dni">DNI</option>
-                        <option value="passport">Pasaporte</option>
+                        <option value="pasaporte">Pasaporte</option>
                         <option value="nie">NIE</option>
                     </select>
                 </div>
 
                 <div className='documentNumber'>
-                    <input type="text" required placeholder='Número de documento' name='dniUser' />
+                    <input type="text" required placeholder='Número de documento' name='docUser' />
                 </div>
 
                 <div className='userPass'>
@@ -70,7 +91,7 @@ export const FormLogin = () => {
                 </div>
 
                 <div className='divSubmitForm'>
-                    <input type="submit" value="Acceder" className='butForm' />
+                    <input type="submit" value="Acceder" className='butForm'/>
                 </div>
 
                 <div className='textForm'>
@@ -89,17 +110,15 @@ export const FormLogin = () => {
 
                 <div className='iconMedia'>
                     <img src={logoGoogle} className="imgIcon" alt='logo google' />
-                    <img src={logoApple} className="imgIcon" alt='logo apple'/>
-                    <img src={logoFacebook} className="imgIcon" alt='logo facebook'/>
+                    <img src={logoApple} className="imgIcon" alt='logo apple' />
+                    <img src={logoFacebook} className="imgIcon" alt='logo facebook' />
                 </div>
 
                 <p></p>
             </form>
-
-            <div>
+            {/* <div>
                 <img src={rectangle} className='rectangleBar' alt="" />
-            </div>
-
+            </div> */}
         </div>
     )
 }

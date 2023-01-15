@@ -1,11 +1,9 @@
+require('dotenv').config();
 const connection = require("../databases/sequelize");
 const userModel = require("../models/user.model");
+const typeDocModel = require("../models/type_doc.model");
 const bcyptjs = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-
-
-
-
 
 const user = {
   /**
@@ -15,15 +13,17 @@ const user = {
    */
   new: async (req, res) => {
     try {
-      const { first_name, last_name, email, phone="", user_password } = req.body;
-      const pass_hash = await bcyptjs.hash(user_password, 8);
+      const { user_rol, nombre, apellido_1, apellido_2, fecha_nac, tipo_doc, num_doc, contraseña } = req.body;
+      const pass_hash = await bcyptjs.hash(contraseña, 8);
       // ------ PASOS PARA LA INSERCIÓN EN LA DB
       var con = await connection.open(); //abrir la db
+      const typeDocM = await typeDocModel.create(con);
+      const typeDoc = await typeDocM.findOne({where :{tipo_documento_ext:tipo_doc}});
       const userM = await userModel.create(con); //creación de modelo
-      const user = await userM.create({ first_name, last_name, email, phone, user_password:pass_hash }); // la inserción del objeto en la db
+      const user = await userM.create({ user_rol,nombre, apellido_1, apellido_2, fecha_nac, tipo_doc:typeDoc.dataValues.id, num_doc, contraseña:pass_hash }); // la inserción del objeto en la db
       //-------
-      const infoJwt = jwt.sign({ email, "id": user.dataValues.id, "first_name":user.dataValues.first_name }, "m1c4s4");
-      res.json({validation:true,"jwt":infoJwt, user:{first_name:user.dataValues.first_name, id:user.dataValues.id, isSpacer:false}});
+      const infoJwt = jwt.sign({ id: user.dataValues.id, nombre: user.dataValues.nombre }, process.env.SECRET_KEY);
+      res.json({validation:true,"jwt":infoJwt, user:{nombre: user.dataValues.nombre}});
     } catch (ValidationError) {
         console.log(ValidationError);
         res.json(false);
@@ -33,25 +33,88 @@ const user = {
   },
 
   /**
+   * Devuelve la id del usuario que tiene sesion iniciada
+   * @param {json} req la petición
+   * @returns {integer} el id del usuario
+   */
+    getRole: async (req, res) => {
+      try {
+        var con = await connection.open();
+        let jwtVerify = jwt.verify(req.cookies.session, process.env.SECRET_KEY);
+        const userM = await userModel.create(con);
+        const user = await userM.findOne({ where: { id:jwtVerify.id } });
+        res.json(user.dataValues.user_rol) ;
+      } catch (ValidationError) {
+        console.log(ValidationError);
+        res.json(false);
+    }finally{
+        await connection.close(con);
+    }
+  },
+
+   /**
+   * Devuelve la id del usuario que tiene sesion iniciada
+   * @param {json} req la petición
+   * @returns {integer} el id del usuario
+   */
+   get_id_from_cookie: (req) => {
+    let jwtVerify = jwt.verify(req.cookies.session, process.env.SECRET_KEY);
+    return jwtVerify.id;
+},
+  
+  /**
+   * 
+   * @param {*} req la petición
+   * @param {*} res la respuesta a la petición
+   */
+  login: async (req, res) => {
+    try {
+      var con = await connection.open();
+      const { num_doc, contraseña } = req.body;
+      const userM = await userModel.create(con);
+      const user = await userM.findOne({ where: { num_doc } });
+      
+      if (user) {
+          let hashSaved = user.dataValues.contraseña;
+          let compare = bcyptjs.compareSync(contraseña, hashSaved);
+          const infoJwt = jwt.sign({ id: user.dataValues.id, nombre: user.dataValues.nombre}, process.env.SECRET_KEY);
+          if (compare) {
+            res.cookie("session", infoJwt)
+            res.json({ validation: true, jwt: infoJwt, user:{nombre: user.dataValues.nombre, rol:user.dataValues.user_rol} });
+          } else {
+            res.json({validation:false,message:"Ohh!! Usuario o contraseña incorrectos"});
+          }
+      }else{
+          res.json({validation:false,message:"Ohh!! Usuario o contraseña incorrectos"});
+      }
+    }catch (error) {
+      res.json(error);
+    } finally {
+      await connection.close(con);
+    }
+  }
+
+  
+  /**
    * Actualiza los datos de un usuario 
    * @param {*} req la petición
    * @param {*} res la respuesta a la petición
    */
-  edit: async (req, res) => {
-    try {
-      let id = session.get_id_from_cookie(req);
-      const { first_name, last_name, phone } = req.body;
-      var con = await connection.open();
-      const userM = await userModel.create(con);
-      await userM.update({ first_name, last_name, phone }, {where :{id}})
-      res.json(true);
-    } catch (ValidationError) {
-        console.log(ValidationError);
-      res.json(false);
-    }finally{
-      await connection.close(con);
-    }
-  },
+  // edit: async (req, res) => {
+  //   try {
+  //     let id = session.get_id_from_cookie(req);
+  //     const { first_name, last_name, phone } = req.body;
+  //     var con = await connection.open();
+  //     const userM = await userModel.create(con);
+  //     await userM.update({ first_name, last_name, phone }, {where :{id}})
+  //     res.json(true);
+  //   } catch (ValidationError) {
+  //       console.log(ValidationError);
+  //     res.json(false);
+  //   }finally{
+  //     await connection.close(con);
+  //   }
+  // },
 
   //   /**
   //  * Actualiza la contraseña de un spacer 
@@ -121,23 +184,6 @@ const user = {
   //     await connection.close(con);
   //   }
   // },
-
-  // /**
-  //  * Añade el id de una dirección a un usuario
-  //  * @param {int} fk_id_address el identificador de la dirección del usuario
-  //  */
-  // add_address: async (req,con,fk_id_address) => {
-  //   try {
-  //     let id = session.get_id_from_cookie(req);
-  //     console.log(id);
-  //     console.log(fk_id_address);
-  //     const userM = await userModel.create(con);
-  //     await userM.update({ fk_id_address}, {where :{id}})
-  //   } catch (ValidationError) {
-  //       console.log(ValidationError);
-  //   }
-  // }
-
 }
 
 module.exports = user;
