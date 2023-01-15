@@ -1,0 +1,167 @@
+.ulMenu {
+  display: none;
+  margin-left: 190px;
+
+
+}
+
+.inputMenu:checked~.ulMenu {
+  display: block;
+  border-radius: 16px;
+}
+
+.inputMenu {
+  display: none;
+}
+
+.labelMenu {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  text-align: right;
+  user-select: none;
+  margin-left: 370px;
+}
+
+.liMenu {
+  display: block;
+  background: lightgrey;
+  padding: 10px;
+  list-style: none;
+  border-bottom: 1px solid grey;
+  text-align: center;
+  width: 400px;
+  border: solid 2px;
+}
+
+
+
+.mainModal {
+  width: 80%;
+  margin: auto;
+  
+}
+
+#modal {
+  background: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: all 0.5s;
+  
+}
+
+#modal p {
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+  width: 60%;
+  height: 40%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  font-size: 1.5em;
+  text-align: center;
+  color: gray;
+  
+}
+
+.pModal{
+  padding-bottom: 10px;
+  color: black;
+}
+
+.divModal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  background-color: rgb(255, 255, 255);
+  border-radius: 14px;
+}
+
+.divModal h3{
+  margin-left: 40px;
+  color: #4B4B4B;
+}
+
+.divModal h2{
+  margin-left: 40px;
+  color: #4B4B4B;
+}
+
+#mostrar-modal {
+  display: none;
+  
+}
+
+#mostrar-modal+label {
+  display: table;
+  margin: auto;
+  color: #fff;
+  line-height: 3;
+  padding: 0 1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-left: 100px;
+  color: black;
+  
+}
+
+#mostrar-modal+label:hover {
+  background: #38678f;
+  
+}
+
+#mostrar-modal:checked~#modal {
+  top: 0;
+}
+
+#mostrar-modal:checked~#cerrar-modal+label {
+  display: block;
+}
+
+#cerrar-modal {
+  display: none;
+}
+
+#cerrar-modal+label {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  z-index: 100;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  background: gray;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  border-radius: 50%;
+  display: none;
+  transition: all 0.5s;
+}
+
+#cerrar-modal:checked~#modal {
+  top: -100vh;
+}
+
+#cerrar-modal:checked+label {
+  display: none;
+}
+
+
+.divHr hr{
+  
+  width: 350px;
+  
+}
