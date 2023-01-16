@@ -217,6 +217,13 @@ CREATE TABLE IF NOT EXISTS eventos(
         modalidad VARCHAR(20),
         tematica VARCHAR(50),
         colectivo VARCHAR(60),
+	       titulo VARCHAR(100),
+        descripcion VARCHAR(1000),
+        localizacion VARCHAR(64),
+        categoria VARCHAR(12),
+        plazas INT,
+        inscripciones INT,
+        coordinador INT,
         
         PRIMARY KEY(id)
 );
