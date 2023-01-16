@@ -1,4 +1,4 @@
-DROP DATABASE desafio;
+#DROP DATABASE desafio;
 CREATE DATABASE IF NOT EXISTS desafio;
 USE desafio;
 
