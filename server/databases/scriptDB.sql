@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS users(
         int_area_organizacion INT,
         int_area_internacional INT,
         int_area_redes_social INT,
+	int_area_educacion INT,
         int_area_empleo INT,
         int_area_inc_social INT,
         int_area_med_ambiente INT,
