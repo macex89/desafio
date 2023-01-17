@@ -3,13 +3,13 @@
 //     var msn = "";
 //     var validation = true;
 //     if (dni.length != 9 ){
-//         msn = "El DNI introducido es incorrecto";
+//         msn = "El documento introducido es incorrecto";
 //         validation = false;
 //     }else{
 //         var letter = dni[dni.length - 1].toUpperCase()
 //         var num = getNumber(dni);
 //         if (num > "99999999") {
-//             msn = "El DNI introducido es incorrecto";
+//             msn = "El documento introducido es incorrecto";
 //             validation=false;
 //         }
 //         else {
@@ -17,7 +17,7 @@
 //             var letters = "TRWAGMYFPDXBNJZSQVHLCKET";
 //             var set = letters.charAt(rest);
 //             if (letter != set) {
-//                 msn = "El DNI introducido es incorrecto"; 
+//                 msn = "El documento introducido es incorrecto"; 
 //             }
 //         }
 //     } 

@@ -9,7 +9,7 @@
 .footerC p{
     color: white;
     text-align: center;
-    font-size: 14px;
+    font-size: 10px;
     padding-left: 10px;
 }
 
@@ -29,7 +29,6 @@
    .divFooter{
     margin: 0 auto;
     width: 100%;
-    width: 380px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -43,7 +42,9 @@
    }
 
    .divFooA a{
+    font-size: 10px;
     color: white;
+    margin-top: 16px;
    }
 
    .divFooter p img{

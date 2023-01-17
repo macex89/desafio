@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import {HomeVolunteer} from "../components/HomeVolunteer"
 import HomeCoordinator from "../components/HomeCoordinator"
-import "../css/coordinator.css"
-
 
 function Home() {
-    const [rol, setRol] = useState();
+    const [coordinator, setCoordinador] = useState(false);
+    const [volunteer, setVolunteer] = useState(false);
 
     const getRol = async () => {
          fetch('/get-role')
             .then((res) => res.json(res))
             .then(res => {
-                setRol(res);
+                if (res== "coordinador") {
+                    setCoordinador(true);
+                }else{
+                    setVolunteer(true);
+                }
             });
     }
 
@@ -23,11 +25,12 @@ function Home() {
 
     return (
         <div>
-            {rol=="coordinador" ? 
+            {coordinator ? 
             <HomeCoordinator></HomeCoordinator>
-            :
+            :""}
+            {volunteer ? 
             <HomeVolunteer></HomeVolunteer>
-            }
+             :""}
             <Footer></Footer>   
         </div>
     );

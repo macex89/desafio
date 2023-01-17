@@ -18,6 +18,8 @@ router.get("/get-role", user.getRole);
 router.post("/new-request",request.new);
 router.post("/accept-request",request.acceptRequest);
 router.post("/reject-request",request.rejectRequest);
+router.get("/get-coordinator-requests",request.getRequestsByCoordinator);
+
 
 //REQUEST 
 router.post("/new-registration",registration.new);
@@ -26,5 +28,7 @@ router.post("/new-registration",registration.new);
 router.post("/new-event",activity.newEvent);
 router.get("/get-event/:id",activity.getEvent);
 router.get("/get-coordinator-events",activity.getEventsByCoordinator);
+router.post("/save-favorite",activity.saveFavorite);
+router.delete("/delete-favorite",activity.deleteFavorite);
 
 module.exports = router;

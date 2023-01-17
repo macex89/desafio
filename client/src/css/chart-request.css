@@ -1,0 +1,53 @@
+.container {
+    margin: 0px !important;
+}
+
+.total-div {
+    background-color: #d9d9d9;
+    height: 8px;
+    margin:0px !important;
+    padding: 0;
+    border:none;
+}
+
+.red {
+    margin:0px !important;
+    padding: 0;
+    background-color:#f5626bed;
+    height: 8px;
+    border:none;
+    width: 40%;
+}
+
+.blue{
+    margin:0px !important;
+    padding: 0;
+    background-color: #6092f0;
+    height: 8px;
+    border:none;
+    position:absolute;
+    width: 20%;
+} 
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info .coordinator-name {
+    font-size: 14px;
+    font-weight: 600;
+    color:#090a0a;
+}
+
+.info .pending-requests, .info .confirm-requests{
+    font-size: 12px;
+    font-weight: 600;
+    color:grey
+}
+
+.search-icon{
+    position: absolute;
+    left: 30px;
+}

@@ -9,11 +9,7 @@ export const Loading = () => {
 
     useEffect(()=>{
         setTimeout(() => {
-            if (rol=="coordinador"){
-                navigate("/coordinador");
-            }else{
-                navigate("/home");
-            }
+            navigate("/home");
           }, "3000")
     },[])
 
