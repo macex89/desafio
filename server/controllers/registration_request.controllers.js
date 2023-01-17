@@ -62,6 +62,27 @@ const requestRegistration = {
     }finally{
         await connection.close(con);
     }
+  },
+
+  /**
+   * Devuelve un json con el número de peticiones pendientes y las aceptadas 
+   * @param {json} req 
+   * @param {json} res 
+   */
+  getRequestsByCoordinator: async (req, res) => {
+    try {
+      var con = await connection.open(); 
+      const requestM = await requestModel.create(con);
+      const user_id = await user.get_id_from_cookie(req);
+      const pendings = await requestM.findAll({where:{fk_id_user:user_id,estado:"pendiente"}});
+      const accepted = await requestM.findAll({where:{fk_id_user:user_id,estado:"aceptada"}}); 
+      res.json({pendings,accepted});
+    } catch (ValidationError) {
+        console.log(ValidationError);
+        res.json(false);
+    }finally{
+        await connection.close(con);
+    }
   }
 }
 

@@ -1,3 +1,17 @@
+@font-face {
+    font-family: "SFProDisplay";
+    src: local("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF") format("opentype"), 
+    url("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF") format("opentype"),
+         url("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYBLACKITALIC.OTF") format("opentype"),
+         url("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF") format("opentype"),
+         url("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF") format("opentype"),
+         url("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYULTRALIGHTITALIC.OTF") format("opentype"),
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
 .formLogin {
     width: 100%;
     max-width: 600px;
@@ -27,7 +41,7 @@
     width: 304px;
     border: none;
     border-bottom: 1px solid;
-    font-size: 17px;
+    font-size: 14px;
     padding-bottom: 7px;
     color: gray;
     border-color: grey;
@@ -43,18 +57,18 @@
     padding-bottom: 7px;
     width: 304px;
     margin-bottom: 10px;
-    font-size: 17px;
+    font-size: 14px;
     border-color: grey;
     
 }
 
 .userPass input {
-    margin-bottom: 50px;
+    margin-bottom: 24px;
     border: none;
     border-bottom: 1px solid;
     padding-bottom: 7px;
     width: 304px;
-    font-size: 17px;
+    font-size: 14px;
     border-color: grey;
 }
 
@@ -70,7 +84,6 @@
     background-color:  #276EF1;
     color: white;
     border: none;
-    font-family: SF Pro Display;
     font-size: 14px;
     cursor:pointer;
 }
@@ -92,12 +105,16 @@
 .textForm a {
     margin-bottom: 20px;
     color: rgb(74, 72, 72);
-    
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'SFProDisplay','Inter', sans-serif;
 }
 
 .textForm p {
     margin-bottom: 10px;
     color: gray;
+    font-size: 12px;
+    font-family: 'SFProDisplay','Inter', sans-serif;
 }
 
 
@@ -112,8 +129,8 @@
 .imgLogin{
     width: 160px;
     height: 38.19;
-    margin-bottom: 60px;
-    margin-top: 80px;
+    margin-bottom: 56px;
+    margin-top: 56px;
 }
 
 .iconMedia{
@@ -136,4 +153,17 @@
 
 .socialMedia{
     margin-top: 40px;
+}
+
+.socialMedia p{
+    font-size: 12px;
+    font-weight: 600;
+    color:rgb(74, 72, 72);
+}
+
+#error-message {
+    display: block;
+    font-size: 14px;
+    text-align: center;
+    color: red;
 }

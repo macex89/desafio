@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "SFProDisplay";
+    src: url("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF") format("opentype"),
+         url("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYBLACKITALIC.OTF") format("opentype"),
+         url("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF") format("opentype"),
+         url("../fonts/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF") format("opentype"),
+}
+
+body {
+    font-family: 'SFProDisplay','Inter', sans-serif;
+}
