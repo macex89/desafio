@@ -33,21 +33,21 @@ CREATE TABLE IF NOT EXISTS users(
         email VARCHAR(50),
         acepta_envio_comunic TINYINT,
         tipo_via VARCHAR(12),
-        direccion VARCHAR(12),
+        direccion VARCHAR(30),
         numero INT,
         piso INT,
         dir_info_adicional VARCHAR(30),
         cp INT,
         provincia VARCHAR(20),
-        localidad VARCHAR(20),
-        nivel_estudios VARCHAR(20),
-        titulo_principal VARCHAR(20),
-        situacion_actual VARCHAR(20),
-        profesion_actual VARCHAR(30),
+        localidad VARCHAR(50),
+        nivel_estudios VARCHAR(30),
+        titulo_principal VARCHAR(30),
+        situacion_actual VARCHAR(30),
+        profesion_actual VARCHAR(80),
         int_area_organizacion INT,
         int_area_internacional INT,
         int_area_redes_social INT,
-	int_area_educacion INT,
+		int_area_educacion INT,
         int_area_empleo INT,
         int_area_inc_social INT,
         int_area_med_ambiente INT,
@@ -80,136 +80,24 @@ CREATE TABLE IF NOT EXISTS users(
 		int_act_enseñar INT,
         idioma VARCHAR(15),
         carnet VARCHAR (8),
-        disponibilidad VARCHAR(30),
+        disponibilidad VARCHAR(60),
         horario VARCHAR(30),
-        otras_habilidades INT,
+        otras_habilidades VARCHAR(150),
+        image VARCHAR (100),
         
         PRIMARY KEY(id),
         FOREIGN KEY (tipo_doc) REFERENCES tipo_documentos(id)
 );
 
-CREATE TABLE IF NOT EXISTS modalidades(
-        id INT AUTO_INCREMENT,
-        nombre VARCHAR(13),
-        
-        PRIMARY KEY(id)
-);
-
-INSERT INTO modalidades VALUES (null, 'Presencial');
-INSERT INTO modalidades VALUES (null, 'No Presencial');
-
-CREATE TABLE IF NOT EXISTS tematicas(
-        id INT AUTO_INCREMENT,
-        nombre VARCHAR(16),
-        
-        PRIMARY KEY(id)
-); 
-
-INSERT INTO tematicas VALUES (null, 'Educación');
-INSERT INTO tematicas VALUES (null, 'Empleo');
-INSERT INTO tematicas VALUES (null, 'Inclusión Social');
-INSERT INTO tematicas VALUES (null, 'Medio Ambiente');
-INSERT INTO tematicas VALUES (null, 'Salud');
-INSERT INTO tematicas VALUES (null, 'Socorros');
-
-CREATE TABLE IF NOT EXISTS colectivos(
-        id INT AUTO_INCREMENT,
-        nombre VARCHAR(48),
-        
-        PRIMARY KEY(id)
-);
-
-INSERT INTO colectivos VALUES (null, 'Desempleadas o Precariedad Laboral');
-INSERT INTO colectivos VALUES (null, 'Infancia');
-INSERT INTO colectivos VALUES (null, 'Jóvenes');
-INSERT INTO colectivos VALUES (null, 'Mujeres en dificultad social');
-INSERT INTO colectivos VALUES (null, 'Personas con problemas de salud');
-INSERT INTO colectivos VALUES (null, 'Personas en situación de extrema vulnerabilidad');
-INSERT INTO colectivos VALUES (null, 'Personas inmigrantes');
-INSERT INTO colectivos VALUES (null, 'Personas mayores y cuidadores');
-INSERT INTO colectivos VALUES (null, 'Personas reclusas y exreclusas');
-INSERT INTO colectivos VALUES (null, 'Población en general');
-INSERT INTO colectivos VALUES (null, 'Solicitantes de asilo y refugio');
-
-
-CREATE TABLE IF NOT EXISTS tipos_actividades(
-        id INT AUTO_INCREMENT,
-        nombre VARCHAR(60),
-        
-        PRIMARY KEY(id)
-); 
-
-INSERT INTO tipos_actividades VALUES (null, 'Colaborar en el traslado de personas que no pueden solas');
-INSERT INTO tipos_actividades VALUES (null, 'Apoyar, asistir y mediar para mejorar las dificultades');
-INSERT INTO tipos_actividades VALUES (null, 'Participar en albergues, pisos y alojamientos de Cruz Roja');
-INSERT INTO tipos_actividades VALUES (null, 'Ayudar a conseguir y organizar los recursos donados');
-INSERT INTO tipos_actividades VALUES (null, 'Repartir ayudas y productos de primera necesidad');
-INSERT INTO tipos_actividades VALUES (null, 'Sencibilizar a la población');
-INSERT INTO tipos_actividades VALUES (null, 'Comunicar y difundir');
-INSERT INTO tipos_actividades VALUES (null, 'Hacer compañía cuando te necesiten');
-INSERT INTO tipos_actividades VALUES (null, 'Proteger y rehabilitar el medio');
-INSERT INTO tipos_actividades VALUES (null, 'Coopear en red y generar alianzas');
-INSERT INTO tipos_actividades VALUES (null, 'Escuchar y orientar a las personas');
-INSERT INTO tipos_actividades VALUES (null, 'Enseñar y capacitar');
-
-CREATE TABLE IF NOT EXISTS comunidades_autonomas(
-        id INT AUTO_INCREMENT,
-        nombre VARCHAR(26),
-        
-        PRIMARY KEY(id)
-);    
-
-INSERT INTO comunidades_autonomas VALUES (null, 'Andalucía');
-INSERT INTO comunidades_autonomas VALUES (null, 'Aragón');
-INSERT INTO comunidades_autonomas VALUES (null, 'Principado de Asturias');
-INSERT INTO comunidades_autonomas VALUES (null, 'Islas Baleares');
-INSERT INTO comunidades_autonomas VALUES (null, 'Canarias');
-INSERT INTO comunidades_autonomas VALUES (null, 'Cantabria');
-INSERT INTO comunidades_autonomas VALUES (null, 'Castilla y León');
-INSERT INTO comunidades_autonomas VALUES (null, 'Castilla-La Mancha');
-INSERT INTO comunidades_autonomas VALUES (null, 'Cataluña');
-INSERT INTO comunidades_autonomas VALUES (null, 'Comunidad Valenciana');
-INSERT INTO comunidades_autonomas VALUES (null, 'Extremadura');
-INSERT INTO comunidades_autonomas VALUES (null, 'Galicia');
-INSERT INTO comunidades_autonomas VALUES (null, 'Comunidad de Madrid');
-INSERT INTO comunidades_autonomas VALUES (null, 'Región de Murcia');
-INSERT INTO comunidades_autonomas VALUES (null, 'Comunidad Foral de Navarra');
-INSERT INTO comunidades_autonomas VALUES (null, 'País Vasco');
-INSERT INTO comunidades_autonomas VALUES (null, 'La Rioja');
-INSERT INTO comunidades_autonomas VALUES (null, 'Ciudad Autónoma de Ceuta');
-INSERT INTO comunidades_autonomas VALUES (null, 'Ciudad Autónoma de Melilla'); 
-
-CREATE TABLE IF NOT EXISTS actividades(
+CREATE TABLE IF NOT EXISTS eventos(
         id INT AUTO_INCREMENT,
         titulo VARCHAR(100),
-        descripcion VARCHAR(1000),
+        descripcion VARCHAR(1500),
         localizacion VARCHAR(64),
         categoria VARCHAR(12),
         plazas INT,
         inscripciones INT,
         coordinador INT,
-        fecha_ini DATETIME,
-		fecha_fin DATETIME,
-        fk_id_modalidad INT,
-        fk_id_tematica INT,
-        fk_id_colectivo INT,
-        fk_id_tipo_actividad INT,
-        fk_id_comunidad_autonoma INT,
-        provincia VARCHAR(30),
-        municipio VARCHAR(30),
-        nombre_actividades VARCHAR(80),
-        
-        PRIMARY KEY(id),
-        FOREIGN KEY (coordinador) REFERENCES users(id),
-        FOREIGN KEY (fk_id_modalidad) REFERENCES modalidades(id),
-        FOREIGN KEY (fk_id_tematica) REFERENCES tematicas(id),
-        FOREIGN KEY (fk_id_colectivo) REFERENCES colectivos(id),
-        FOREIGN KEY (fk_id_tipo_actividad) REFERENCES tipos_actividades(id),
-        FOREIGN KEY (fk_id_comunidad_autonoma) REFERENCES comunidades_autonomas(id)
-); 
-
-CREATE TABLE IF NOT EXISTS eventos(
-        id INT AUTO_INCREMENT,
 		fecha_ini DATE,
         fecha_fin DATE,
         hora_empezar VARCHAR(6),
@@ -217,15 +105,11 @@ CREATE TABLE IF NOT EXISTS eventos(
         modalidad VARCHAR(20),
         tematica VARCHAR(50),
         colectivo VARCHAR(60),
-	       titulo VARCHAR(100),
-        descripcion VARCHAR(1000),
-        localizacion VARCHAR(64),
-        categoria VARCHAR(12),
-        plazas INT,
-        inscripciones INT,
-        coordinador INT,
+        municipio VARCHAR(100),
+        image VARCHAR (100),
         
-        PRIMARY KEY(id)
+        PRIMARY KEY(id),
+        FOREIGN KEY (coordinador) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS valoraciones(
@@ -236,7 +120,7 @@ CREATE TABLE IF NOT EXISTS valoraciones(
         
         PRIMARY KEY(id),
         FOREIGN KEY (fk_id_user) REFERENCES users(id),
-        FOREIGN KEY (fk_id_actividad) REFERENCES actividades(id)
+        FOREIGN KEY (fk_id_actividad) REFERENCES eventos(id)
 
 );
 
@@ -247,7 +131,7 @@ CREATE TABLE IF NOT EXISTS inscripciones(
         
         PRIMARY KEY(id),
         FOREIGN KEY (fk_id_user) REFERENCES users(id),
-        FOREIGN KEY (fk_id_actividad) REFERENCES actividades(id)
+        FOREIGN KEY (fk_id_actividad) REFERENCES eventos(id)
 );
 
 CREATE TABLE IF NOT EXISTS interesados(
@@ -257,7 +141,7 @@ CREATE TABLE IF NOT EXISTS interesados(
         
         PRIMARY KEY(id),
         FOREIGN KEY (fk_id_user) REFERENCES users(id),
-        FOREIGN KEY (fk_id_actividad) REFERENCES actividades(id)
+        FOREIGN KEY (fk_id_actividad) REFERENCES eventos(id)
 ); 
 
 
@@ -269,5 +153,25 @@ CREATE TABLE IF NOT EXISTS solicitudes_inscripciones(
         
         PRIMARY KEY(id),
         FOREIGN KEY (fk_id_user) REFERENCES users(id),
-        FOREIGN KEY (fk_id_actividad) REFERENCES actividades(id)
+        FOREIGN KEY (fk_id_actividad) REFERENCES eventos(id)
 ); 
+
+CREATE TABLE IF NOT EXISTS actividades_carrusels(
+        id INT AUTO_INCREMENT,
+        titulo VARCHAR(100),
+        descripcion VARCHAR(1000),
+        localizacion VARCHAR(64),
+		fecha_ini DATETIME,
+        hora_empezar VARCHAR(6),
+        image VARCHAR(500),
+        coordinador INT,
+
+        PRIMARY KEY(id)
+);
+
+INSERT INTO actividades_carrusels VALUES (null,'Medios de rescate','Rescate a necesitados','Rascafría' ,'2023-02-10',"10:00", "rescate.jpg","2");
+INSERT INTO actividades_carrusels VALUES (null,'Actuación con menores','Ayuda a menores','Canencia' ,'2023-03-07',"12:00","menores.jpg","2");
+INSERT INTO actividades_carrusels VALUES (null,'Reparto de medicinas','Repartir medicinas','Buitrago de Lozoya' ,'2023-04-21',"10:00","medicinas.jpg","2");
+INSERT INTO actividades_carrusels VALUES (null,'Apoyo en gestión','Gestionar','Madrid' ,'2023-04-21',"10:00","gestion.jpg","2");
+INSERT INTO actividades_carrusels VALUES (null,'Batidas de limpieza','Limpieza','Madrid' ,'2023-04-21',"12:00","limpieza.jpg","2");
+INSERT INTO actividades_carrusels VALUES (null,'Reparto de alimentos','Repartir alimentos','Madrid' ,'2023-04-21',"18:00","alimentos.jpg","2");
