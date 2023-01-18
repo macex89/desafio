@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   backend:
-    image: aberto85/server:91
+    image: alberto85/server:91
       - 3001:3001
     networks:
       - localnet
