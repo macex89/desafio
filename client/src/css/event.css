@@ -1,6 +1,6 @@
-.page-content{
+.page-content {
     margin-left: 3px;
-   
+
     padding-right: 2px;
 }
 
@@ -18,7 +18,7 @@
     height: 100px;
     margin-top: 10px;
     padding-left: 10px;
-    
+
 }
 
 .divCom {
@@ -44,15 +44,19 @@
     color: white;
     border: none;
     text-align: center;
-    
+    outline:none;
+  
 }
 
 .divContEvent {
     border-radius: 12px;
     background-color: #F1F1F1;
+    padding-left: 2px;
+    padding-right: 10px;
+    margin-right: 15px;
 }
 
-.divContEvent img{
+.divContEvent img {
     border-top-left-radius: 14px;
     border-top-right-radius: 14px;
     width: 412px;
@@ -65,26 +69,76 @@
     color: #4B4B4B;
 }
 
-.h2Sub{
+.h2Sub {
     margin-bottom: 10px;
     color: #4B4B4B;
     padding-left: 10px;
 }
 
-.h2Coor{
+.h2Coor {
     color: #4B4B4B;
 }
 
 
-.divTextEvent p{
+.divTextEvent p {
     color: #4B4B4B;
     font-size: 14px;
     font-weight: bold;
-    
+
 }
 
-.pDesc{
+.pDesc {
     color: #4B4B4B;
     padding-left: 10px;
     padding-right: 5px;
 }
+
+.boxEventAll {
+    width: 195px;
+    height: 135px;
+    background-color: white;
+   
+}
+
+.boxEventAll p {
+    margin-bottom: 3px;
+    margin-top: 3px;
+    padding-left: 5px;
+    color: black;
+}
+
+.pCarruselEvent {
+    font-weight: bold;
+    font-size: 18px;
+    color: #4B4B4B;
+    font-size: 16px
+
+}
+
+.pCarruselLocal{
+    font-weight: bold;
+    font-size: 14px;
+    color: #4B4B4B;
+}
+
+.pCarruselTime{
+    font-size: 12px;
+}
+
+.divTotalCarrusel{
+    display: flex;
+    justify-content: row;
+}
+
+.imgEventAll{
+    width: 187px;
+    height: 133px;
+}
+
+.divPesEvent{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1px;
+}
+
+

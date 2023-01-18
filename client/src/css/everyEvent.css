@@ -1,0 +1,99 @@
+.imgEventAll2{
+    width: 395px;
+    height: 236px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.pCarruselEvent2{
+    color:#090A0A;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.pCarruselTime2{
+    color:#4B4B4B;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pCarruselTime3{
+    color: #6093F1;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pfichaTiempo{
+    display: flex;
+    flex-direction: row;
+    margin-right: 3px;
+}
+
+.pfichaTiempo p{
+    margin-right: 5px;
+}
+
+.pfichaDoc{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.pfichaDoc p{
+    margin-bottom: 0.3px;
+    margin-top: 1px;
+}
+
+.divCom2{
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    margin-bottom: 15px;
+}
+
+.footerC2{
+    height: 190px;
+    width: 420px;
+}
+
+.divFooter{
+    width: 370px;
+}
+
+.boxEventDates{
+    background-color: #F9F9F9;
+    padding-left: 7px;
+    padding-right: 10px;
+    max-width: 400px;
+}
+
+.buttonBack2{
+    outline:none;
+}
+
+.butBackEvent{
+    border: none;
+    background-color: white;
+    margin-left: 10px;
+}
+
+.menuFormation{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.divFormations{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1px;
+}
+
+.divFormations a{
+    margin-left: 176px;
+}
+
+.divEventWhite{
+    background-color: white;
+    padding: 2px;
+}
