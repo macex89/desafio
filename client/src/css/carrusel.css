@@ -1,7 +1,8 @@
 .imageCarrusel {
-    height: 170px;
-    min-width: 180px;
-    padding: 5px;
+    
+    min-width: 190px;
+    padding: 10px;
+    border-radius: 2px;
 }
 
 .imageCarrusel img {
@@ -10,12 +11,19 @@
     pointer-events: none;
 }
 
+.boxEventAll .imgEventAll{
+    height: 120px;
+    border-radius: 2px;
+}
+
 .slider {
     padding-top: 5px;
     padding-bottom: 5px;
     display: flex;
     cursor: grab;
     background-color: #f3f0f0f8;
+    width: 1200px;
+   height: 240px;
 }
 
 .slider-container {
@@ -26,11 +34,12 @@
 
 
 .divLoginCar {
-    margin: 0 auto;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     margin-top: 40px;
     align-items: center;
-    width: 200px;
+
 }
 
 .imgLogin2 {
@@ -39,22 +48,28 @@
     height: 38.19;
     margin-bottom: 10px;
     margin-top: 5px;
+    margin-left: 90px;
 }
 
 
 .pTitleEvent {
-    font-size: 18px;
+
+    margin-top: 38px;
+    font-size: 24px;
     font-weight: bold;
-    margin-top: 20px;
     margin-bottom: 10px;
+    color: black;
+   width: 300px;
 }
 
 .pEvent {
     font-size: 24px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .pForm{
     font-size: 24px;
     font-weight: bold;
+    margin-top: 38px;
 }
