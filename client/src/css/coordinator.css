@@ -104,7 +104,42 @@ input.seach-input {
 }
 
 .react-icon{
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     margin-bottom: 8px;
+}
+
+.event-details {
+    width:50%;
+}
+
+.title {
+
+    margin-top: 38px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+   width: 300px;
+}
+
+.logout-icon {
+    height: 23px;
+    width: 23px;
+}
+
+.icon-calendar{
+    height: 26px;
+    width: 26px;
+    margin-top: -5px;
+    margin-left: 5px;
+}
+
+.requests-pending {
+    padding: 3px 27px;
+    color: white;
+    background: #f36a72;
+    margin-top: 8px !important;
+    border-radius: 10px;
+    font-size: 16px;
 }

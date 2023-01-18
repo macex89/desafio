@@ -1,49 +1,33 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
-userModel = {
+eventCarruselModel = {
     create: async (sequelize) => {
-        const Users = sequelize.define("users",{
+        const Users = sequelize.define("actividades_carrusels",{
             id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true
             },
-            user_rol: {
+            titulo: {
                 type: DataTypes.STRING,
             },
-            password: {
+            descripcion: {
                 type: DataTypes.STRING,
             },
-            nombre: {
+            localizacion: {
                 type: DataTypes.STRING,
             },
-            apellido_1: {
-                type: DataTypes.STRING,
-            },
-            apellido_2: {
-                type: DataTypes.STRING,
-            },
-            fecha_nac: {
-                type: DataTypes.DATE,
-            },
-            tipo_doc: {
-                type: DataTypes.INTEGER,
-            },
-            num_doc: {
+            fecha_ini: {
                 type: DataTypes.STRING,
             },
             image: {
-                type: DataTypes.STRING,
-            },
-            localidad: {
                 type: DataTypes.STRING,
             }
         }, {
             timestamps: false
         })
-
         return Users
     }
 }
 
-module.exports = userModel;
+module.exports = eventCarruselModel;

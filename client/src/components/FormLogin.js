@@ -8,7 +8,7 @@ import logoFacebook from '../img/logoFacebook.png';
 import logoGoogle from '../img/logoGoogle.png';
 import statusBar from '../img/statusBar.png';
 import rectangle from '../img/rectangle.png';
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const FormLogin = () => {
     const navigate = useNavigate();
@@ -42,7 +42,7 @@ export const FormLogin = () => {
             if (validation){
                 let loginData = {
                     num_doc: e.target.docUser.value,
-                    contraseña: e.target.passwordUser.value,
+                    password: e.target.passwordUser.value,
                 }
 
                 let Metadatos = {

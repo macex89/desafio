@@ -5,8 +5,6 @@ import barra from '../../img/barra.png'
 
 export const Footer = () => {
     return (
-
-        <div>
             <footer className='footerC'>
                 <div className='divFooter'>
                 <p className='pdif'>Política de Privacidad</p>
@@ -23,7 +21,5 @@ export const Footer = () => {
                     <a href="">Ver más</a>
                 </div>
             </footer>
-        </div>
-
     )
 }
