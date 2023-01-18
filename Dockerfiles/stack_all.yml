@@ -4,6 +4,7 @@ services:
 
   backend:
     image: alberto85/server:54
+    ports:
       - 3001:3001
     networks:
       - localnet
