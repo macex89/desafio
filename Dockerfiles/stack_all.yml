@@ -23,7 +23,7 @@ services:
       - backend
   
   api:
-    image: alberto85/api:00
+    image: alberto85/api:98
     ports:
       - 2000:2000
     networks:
