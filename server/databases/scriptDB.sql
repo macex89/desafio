@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS users(
 		int_act_rehab_medio INT,
 		int_act_trabajo_red INT,
         int_act_orientar INT,
-		int_act_enseñar INT,
+		int_act_ensenar INT,
         idioma VARCHAR(15),
         carnet VARCHAR (8),
         disponibilidad VARCHAR(60),
