@@ -22,6 +22,13 @@ services:
     depends_on:
       - backend
   
+  api:
+    image: alberto85/api:00
+    ports:
+      - 2000:2000
+    networks:
+      - localnet
+  
   dbmanager:
     image: adminer
     ports:
