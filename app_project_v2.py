@@ -133,6 +133,6 @@ de insert de datos y esas cosas...
 recomend(id)
 
 if __name__=='__main__':
-    app.run(debug = True)
+    app.run(debug = True, port=2000)
 
 
