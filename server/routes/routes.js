@@ -33,6 +33,7 @@ router.post("/new-registration",registration.new);
 //ACTIVITIES
 router.post("/new-event",activity.newEvent);
 router.get("/get-event/:id",activity.getEvent);
+router.get("/get-carrousel-event/:id",activity.getEvent);
 router.get("/get-coordinator-events",activity.getEventsByCoordinator);
 router.get("/get-events",activity.getEvents);
 router.post("/save-favorite",activity.saveFavorite);
