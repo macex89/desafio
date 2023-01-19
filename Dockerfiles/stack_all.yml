@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   backend:
-    image: alberto85/server:54
+    image: alberto85/server:71
     ports:
       - 5000:3001
     networks:
@@ -14,7 +14,7 @@ services:
       - db
 
   frontend:
-    image: alberto85/client:53
+    image: alberto85/client:70
     ports: 
       - 3000:80
     networks:
