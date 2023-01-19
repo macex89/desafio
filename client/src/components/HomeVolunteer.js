@@ -74,7 +74,7 @@ export const HomeVolunteer = () => {
     return (
         <div>
 
-            <div className='divLoginCar'>
+            <div className='divLoginCarPrin'>
                 <img src={logo} className='imgLogin3' alt="Logo Cruz Roja" />
 
                 <div><MenuModal /></div>
@@ -123,15 +123,26 @@ export const HomeVolunteer = () => {
                 <p className='iconPunto2'><BsDot size={30} /></p>
                 <p className='pConfirmens'>Pendientes</p>
             </div>
-            {eventosLocal && <div className='divEventVisu'>
-                <p className='infoEventP'>| {eventosLocal.fecha_ini}</p>
-                <p className='iconPunto'><BsDot size={30}  /></p>
-                <p className='infoEventP'>{eventosLocal.titulo}</p>
-                <p className='iconPunto'><BsDot size={30} /></p>
-                <p className='infoEventP'>{eventosLocal.hora_empezar}h</p>
-            </div>}
-
-
+            {eventosLocal ? 
+            <div>
+              
+                <div className='divEventVisu'>
+                    <p className='infoEventP' style={{ color: "#6093F1" }}>| {eventosLocal.fecha_ini}</p>
+                    <p className='iconPunto'><BsDot size={30} /></p>
+                    <p className='infoEventP'>{eventosLocal.titulo}</p>
+                    <p className='iconPunto'><BsDot size={30} /></p>
+                    <p className='infoEventP'>{eventosLocal.hora_empezar}h</p>
+                </div>
+                {/* <div className='divEventVisu'>
+                    <p className='infoEventP' style={{ color: "red" }}>| {eventosLocal.fecha_ini}</p>
+                    <p className='iconPunto'><BsDot size={30} /></p>
+                    <p className='infoEventP'>{eventosLocal.titulo}</p>
+                    <p className='iconPunto'><BsDot size={30} /></p>
+                    <p className='infoEventP'>{eventosLocal.hora_empezar}h</p>
+                </div> */}
+            </div>
+                : ""}
+                
 
             <motion.div className='slider-container'>
                 <div className='divPesEvent'>

@@ -256,20 +256,21 @@ flex-direction: row;
 
 .boxAllFormation{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   font-weight: bold;
-  margin-bottom: 5px;
-  margin-top: 10px;
-  background-color: #0A84FF;
+  margin-top: 5px;
+  background-color: #F5F5F5;
   border: none;
-  border-radius: 48px;
+  align-items: flex-start;
  
 }
 
 .pFormation{
-  color: white;
-  font-size: 16px;
-  text-align: center;
+  color: #4B4B4B;
+  font-size: 15px;
+  text-align: left;
+  padding-left: 20px;
+  
 }
 .pFormDis{
   color: #090A0A;
@@ -289,8 +290,23 @@ flex-direction: row;
 }
 
 .iconPuntos{
+  width: 100%;
   display: flex;
-  justify-content: end;
-  
+  justify-content: center;
+  z-index: 100;
+  position: relative;
+  height: 53px;
 }
 
+.divLoginCarPrin{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 40px;
+  align-items: center;
+  margin-left: 120px;
+}
+
+.divLoginCarPrin .imgLogin3{
+  padding-right: 40px;
+}

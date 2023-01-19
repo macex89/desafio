@@ -1,0 +1,24 @@
+.dots{
+    width: 30px;
+    height: 30px;
+    background: #bf2e37;
+    border-radius: 10px;
+    margin-right: 3px;
+    margin-top: 16px;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.dots-cont{
+    display: flex;
+    justify-content: flex-start;
+    width: 89%;
+    
+}
+
+.heart{
+    margin-left: 3px;
+}

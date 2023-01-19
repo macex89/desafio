@@ -15,7 +15,7 @@ export const MenuAllEvents = () => {
         fetch("/get-events")
             .then(response => response.json(response))
             .then(response => {
-
+                console.log(response)
                 setAllEvents(response)
 
                 // setEvents(response)
@@ -45,12 +45,12 @@ export const MenuAllEvents = () => {
 
                         <div key={i} className="boxEventAll2">
 
-                            <button onClick={() => goToPag(`/evento/${everyEvent.id}`)} className="butStartEvent">
+                            <button onClick={() => goToPag(`/evento/${btoa(everyEvent.id)}`)} className="butStartEvent">
                                 <div className='divEventAllImage'>
                                     <img src={everyEvent.image} className="imgEventAllDiv" alt="" />
                                     <div className='divEventAllDiv'>
                                         <p className='pCarruselEvent'>{everyEvent.titulo} </p>
-                                        <p className='pCarruselLocal'>  <img src={location} />{everyEvent.localizacion}</p>
+                                        <p className='pCarruselLocal'>  <img src={location} />{everyEvent.municipio}</p>
                                     </div>
                                     <div className='divTimeAll'>
                                         {/* <p className='pTimeAll'>{everyEvent.fecha_ini}</p> */}
