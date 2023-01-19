@@ -47,8 +47,8 @@
 .divCom2{
     display: flex;
     flex-direction: row;
-    height: 30px;
-    margin-bottom: 15px;
+    height: 32px;
+    margin-bottom: 30px;
 }
 
 .footerC2{
@@ -65,6 +65,7 @@
     padding-left: 7px;
     padding-right: 10px;
     max-width: 400px;
+    padding-bottom: 10px;
 }
 
 .buttonBack2{
@@ -96,4 +97,74 @@
 .divEventWhite{
     background-color: white;
     padding: 2px;
+}
+
+.boxCoordinatorInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.boxCoordinatorInfo p{
+    color:#4B4B4B;
+    font-size: 16px;
+}
+
+.coordinator-image2{
+    height: 100px;
+    width: 100%;
+    height: 100px;
+    width: 95px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+.boxCoordinatorInfo2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.pCarruselEvent4{
+    color: #4B4B4B;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 1px;
+}
+
+.pCarruselEvent5 {
+    color: #4B4B4B;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.divModalAsistirEvento{
+    display: flex;
+    flex-direction: column;
+  
+    text-align: center;
+}
+
+.pAsistir{
+    color:#090A0A;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.pSeguro{
+    color: #72777A;
+    font-size: 16px;
+}
+
+.pGracias{
+    font-size: 16px;
+    color: #0A84FF;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    text-decoration: none;
 }

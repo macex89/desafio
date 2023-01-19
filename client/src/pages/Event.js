@@ -3,20 +3,30 @@ import { useParams, Link } from "react-router-dom";
 import logo from '../img/logo.png'
 import logoComunidad from '../img/logoComunidad.png'
 import { Footer } from "../components/layout/Footer";
-import imgMedicinas from '../img/imgMedicinas.png'
 import { MenuModal } from "../components/MenuModal";
+import { MenuModal2 } from "../components/MenuModal2";
 import { ButtonBack } from "../components/ButtonBack"
+import { MenuConfirmEvent } from "../components/MenuConfirmEvent";
+
+
+
+
 
 
 function Event() {
     const { id } = useParams();
     const [event, setEvent] = useState();
+    const [coordinator, setCoordinator] = useState();
 
+
+    //Traemos los datos del evento en cuestión
     const getEvent = () => {
         fetch(`/get-event/${id}`)
             .then((res) => res.json(res))
             .then(res => {
+                console.log(res)
                 setEvent(res);
+                getCoordinator(res.coordinador);
             });
     }
 
@@ -27,41 +37,32 @@ function Event() {
 
     console.log(event)
 
-    const enrollTo = async () => {
-        let data = {
-            method: 'POST',
-            body: JSON.stringify({ fk_id_actividad: id }),
-            mode: "cors",
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Content-type": "application/json",
-            },
-        };
-        await fetch("/new-request", data)
-            .then((res) => res.json())
-            .then((res) => {
-                console.log(res);
-            })
+
+
+    //Traemos los datos del coordinador
+    const getCoordinator = (coordinator) => {
+        console.log(coordinator)
+        fetch(`/get-logued-coordinator/${coordinator}`)
+            .then((res) => res.json(res))
+            .then(res => {
+                console.log(res)
+                setCoordinator(res);
+            });
+
     }
 
-
-
-    // const imagesEvents =
-    // {
-    //     id: '1',
-    //     title: 'Reparto de medicinas',
-    //     subtitle: 'Cruz Roja Española Sierra Norte',
-    //     descripcion: 'La intervención de Cruz Roja Española (CRE) en materia de prevención y promoción de la salud ha estado enmarcada en estos últimos años por el Plan de Salud que vio la luz en 2007',
-    //     image: imgMedicinas
+//para modifica formato fecha
+    // const formatDate = (d) => {
+    //     var date = d.split("-");
+    //     return `${date[2]}/${date[1]}/${date[0]}`;
     // }
 
-
-
+    
     return (
         <div className="page-content">
 
             <div className='divLoginCar'>
-                <p className="buttonBack"><ButtonBack/></p>
+                <p className="buttonBack"><ButtonBack /></p>
                 <img src={logo} className='imgLogin2' alt="Logo Cruz Roja" />
                 <p><MenuModal /></p>
             </div>
@@ -72,25 +73,30 @@ function Event() {
 
                 <div className="boxEventDates">
                     <img src={`/${event.image}`} className="imgEventAll2" alt="" />
+                    <div className="iconPuntos">
+                    <p><MenuModal2/></p>
+                    </div>
                     <div className="pfichaDoc">
-                    <p className='pCarruselEvent2'>{event.titulo} </p>
-                    <p className='pCarruselTime2'>Cruz Roja Española Sierra Norte</p>
-                    <p className='pCarruselTime2'>{event.localizacion}</p>
+
+                        <p className='pCarruselEvent2'>{event.titulo} </p>
+                        <p className='pCarruselTime2'>Cruz Roja Española Sierra Norte</p>
+                        <p className='pCarruselTime2'>{event.localizacion}</p>
                     </div>
                     <div className="pfichaTiempo">
-                    <p className='pCarruselTime3'>{event.fecha_ini}</p>
-                    <p className='pCarruselTime3'>|</p>
-                    <p className='pCarruselTime3'>{event.hora_empezar}</p>
-                    <p className='pCarruselTime3'>{event.hora_terminar}</p>
-                    <p className='pCarruselTime3'>h</p>
+                        <p className='pCarruselTime3'>{event.fecha_ini}</p>
+                        <p className='pCarruselTime3'>|</p>
+                        <p className='pCarruselTime3'>{event.hora_empezar}</p>
+                        <p className='pCarruselTime3'>{event.hora_terminar}</p>
+                        <p className='pCarruselTime3'>h</p>
                     </div>
 
                     <div className="divContEvent2">
 
                         <div className="divCom2">
                             <img src={logoComunidad} className='imgLogoCom' alt="Logo Cruz Roja" />
-                            <button onClick={() => { enrollTo() }} className="butAsis">Asistir</button>
-
+                            {/* <button onClick={() => { enrollTo() }} className="butAsis">   </button> */}
+                            <p><MenuConfirmEvent/></p>
+                         
                         </div>
                         <hr />
 
@@ -102,8 +108,17 @@ function Event() {
                     <hr />
 
                     <h2 className="pCarruselEvent2">¿Quién es nuestro coordinador?</h2>
+                    {coordinator &&
+                        <div className="boxCoordinatorInfo2">
+                    
+                            <img className="coordinator-image2" src={`/users/${coordinator.image}`}></img>
+                            <p className='pCarruselEvent4'>{coordinator.nombre} {coordinator.apellido_1} {coordinator.apellido_2} </p>
+                            <p className='pCarruselEvent5'>250 eventos gestionados</p>
+                            <p className='pCarruselEvent5'>Activo desde 22/06/2019</p>
 
-                    <p className='pCarruselLocal'>{event.coordinador}</p>
+                        </div>}
+
+
 
                 </div>
             }

@@ -1,5 +1,14 @@
 require('dotenv').config();
 const Sequelize = require('sequelize');
+const fs = require('fs');
+
+const serverCa = fs.readFile(`./DigiCertGlobalRootCA.crt.pem`, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log('ssl cert sent');
+  });
 
 const connection = {
     open: async () => {
@@ -7,7 +16,11 @@ const connection = {
             host: process.env.HOST,
             timezone: '+01:00',
             dialect: 'mysql',
-            port: process.env.DB_PORT
+            port: process.env.DB_PORT,
+            dialect: 'mysql',
+            dialectOptions: {  ssl: {
+                ca: serverCa
+            }}
         })
        
         await sequelize.authenticate()

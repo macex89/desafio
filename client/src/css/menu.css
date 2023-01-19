@@ -153,6 +153,8 @@
   transition: opacity 400ms ease-in;
 }
 
+
+
 .close {
   background: #606061;
   color: #FFFFFF;
@@ -170,10 +172,12 @@
   -moz-box-shadow: 1px 1px 3px #000;
   -webkit-box-shadow: 1px 1px 3px #000;
   box-shadow: 1px 1px 3px #000;
+  text-decoration: none;
 }
 
 .close:hover {
   background: #00d9ff;
+  
 }
 
 .aModal{
@@ -193,11 +197,15 @@
   width: 140px;
 }
 
+.modalEventsTotal2{
+  width: 140px;
+}
+
 .boxEventAll2{
-  border-top: solid 1px;
+  display: flex;
+  flex-direction: column;
   padding: 1px;
   margin: 1px;
-  text-align: center;
 }
 
 .imgMenuModal{
@@ -230,5 +238,59 @@ flex-direction: row;
 
 .divPmodal h3{
   margin-top: 21px;
+}
+
+.aModal3{
+  text-decoration: none;
+  color:white;
+  margin-left: 110px;
+  margin-top: 10px;
+  background-color: #0A84FF;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 24px;
+  font-size: 15px;
+
+}
+
+.boxAllFormation{
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  background-color: #0A84FF;
+  border: none;
+  border-radius: 48px;
+ 
+}
+
+.pFormation{
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+.pFormDis{
+  color: #090A0A;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.butStartEvent{
+  margin-bottom: 5px;
+  margin-top: 10px;
+  background-color: #F5F5F5;
+  border: none;
+  
+  color: white;
+}
+
+.iconPuntos{
+  display: flex;
+  justify-content: end;
+  
 }
 
