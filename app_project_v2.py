@@ -18,7 +18,7 @@ def create_soup(x):
     return x['tematica'] + ' ' + x['modalidad']+ ' ' + x['hora_empezar']
 
 
-@app.route("http://cruzrojaportaldelvoluntario.westeurope.cloudapp.azure.com:3000/home/<interger:id>", methods=['GET'])
+@app.route("/<interger:id>", methods=['GET'])
 
 
 def recomend(id):
