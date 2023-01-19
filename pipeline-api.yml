@@ -40,8 +40,8 @@ steps:
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'DockerJavo'
-    repository: 'javo3000/javoapi'
+    containerRegistry: 'DockerAlberto'
+    repository: 'alberto85/api'
     command: 'buildAndPush'
     buildContext: './'
     Dockerfile: 'Dockerfile/api.Dockerfile'
