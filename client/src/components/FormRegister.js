@@ -44,6 +44,7 @@ export const FormRegister = () => {
                     num_doc: e.target.docUser.value,
                     password: e.target.passwordUser.value,
                 }
+                console.log(loginData);
 
                 let Metadatos = {
                     method: 'POST',

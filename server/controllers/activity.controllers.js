@@ -74,8 +74,12 @@ const activity = {
   getEvents: async (req, res) => {
     try {
       var con = await connection.open();
-      const activityM = await activityCarrusel.create(con);
-      const allActivity = await activityM.findAll();
+      const activityM = await activityModel.create(con);
+      var allActivity = [];
+      for(let i=1; i<7; i++){
+        const activity = await activityM.findOne({where: {id:i}});
+        allActivity.push(activity)
+      } 
       res.json(allActivity);
     } catch (ValidationError) {
         console.log(ValidationError);
