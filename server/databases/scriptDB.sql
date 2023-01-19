@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS users(
         id INT AUTO_INCREMENT,
         user_rol VARCHAR(15),
         descripcion VARCHAR(500),
-        pass VARCHAR (65),
+        password VARCHAR (65),
         fecha_alta DATETIME,
         nombre VARCHAR(20), 
         apellido_1 VARCHAR(20), 
@@ -155,6 +155,18 @@ CREATE TABLE IF NOT EXISTS solicitudes_inscripciones(
         FOREIGN KEY (fk_id_user) REFERENCES users(id),
         FOREIGN KEY (fk_id_actividad) REFERENCES eventos(id)
 ); 
+
+CREATE TABLE IF NOT EXISTS tematicas(
+        id INT AUTO_INCREMENT,
+        nombre VARCHAR(16),
+        PRIMARY KEY(id)
+);
+INSERT INTO tematicas VALUES (null, 'Educación');
+INSERT INTO tematicas VALUES (null, 'Empleo');
+INSERT INTO tematicas VALUES (null, 'Inclusión Social');
+INSERT INTO tematicas VALUES (null, 'Medio Ambiente');
+INSERT INTO tematicas VALUES (null, 'Salud');
+INSERT INTO tematicas VALUES (null, 'Socorros');
 
 CREATE TABLE IF NOT EXISTS actividades_carrusels(
         id INT AUTO_INCREMENT,
