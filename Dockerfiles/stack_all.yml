@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   backend:
-    image: alberto85/server:108
+    image: alberto85/server:113
     ports:
       - 5000:5000
     networks:
@@ -12,9 +12,9 @@ services:
     #  - /tmp/back:/usr/src/app
 
   frontend:
-    image: alberto85/client:107
+    image: alberto85/client:112
     ports: 
-      - 3000:80
+      - 80:80
     networks:
       - localnet
     #volumes:
@@ -23,7 +23,7 @@ services:
       - backend
   
   api:
-    image: alberto85/api:98
+    image: alberto85/api:111
     ports:
       - 2000:2000
     networks:
