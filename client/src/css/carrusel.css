@@ -40,7 +40,7 @@
     justify-content: space-around;
     margin-top: 40px;
     align-items: center;
-
+    
 }
 
 .imgLogin2 {
@@ -53,12 +53,13 @@
 }
 
 .imgLogin3{
-    margin: 0 auto;
+   
     width: 160px;
     height: 38.19;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     margin-top: 5px;
-    margin-left: 110px;
+    border-radius: 4px;
+    
 }
 
 .imgLogin4{
@@ -71,7 +72,7 @@
     margin-top: 38px;
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 10px;
+    
     color: black;
    width: 300px;
 }
@@ -79,7 +80,7 @@
 .pEvent {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 10px;
+    
 }
 
 .pForm{

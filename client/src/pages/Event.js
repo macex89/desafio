@@ -7,18 +7,13 @@ import { MenuModal } from "../components/MenuModal";
 import { MenuModal2 } from "../components/MenuModal2";
 import { ButtonBack } from "../components/ButtonBack"
 import { MenuConfirmEvent } from "../components/MenuConfirmEvent";
-
-
-
-
-
+import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
 
 function Event() {
     var { id } = useParams();
     id = atob(id);
     const [event, setEvent] = useState();
     const [coordinator, setCoordinator] = useState();
-
 
     //Traemos los datos del evento en cuestión
     const getEvent = () => {
@@ -35,10 +30,6 @@ function Event() {
         getEvent();
 
     }, [])
-
-    console.log(event)
-
-
 
     //Traemos los datos del coordinador
     const getCoordinator = (coordinator) => {
@@ -58,7 +49,7 @@ function Event() {
     //     return `${date[2]}/${date[1]}/${date[0]}`;
     // }
 
-    
+
     return (
         <div className="page-content">
 
@@ -73,9 +64,14 @@ function Event() {
             {event &&
 
                 <div className="boxEventDates">
-                    <img src={`/${event.image}`} className="imgEventAll2" alt="" />
-                    <div className="iconPuntos">
-                    <p><MenuModal2/></p>
+                    <div className="imgEventAll2 menu-container">
+                        <img src={`/${event.image}`} style={{position: "absolute"}} className="imgEventAll2" alt="" />
+                        <div className="iconPuntos">
+                            <div className="dots-cont"><AiOutlineHeart className="dots heart" color="white"/></div>
+                            <div className="heart-cont"><MenuModal2/></div>
+                        <div/>
+                    </div>
+                    
                     </div>
                     <div className="pfichaDoc">
 

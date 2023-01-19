@@ -17,6 +17,7 @@ export const FormLogin = () => {
     
     const loginUser = async e => {
         e.preventDefault();
+        console.log("hello");
         document.getElementById("error-message").style.display="none";
         const cleanDni = checkNotAllChar(e.target.docUser.value);
         const cleanPass = checkNotAllChar(e.target.passwordUser.value);
@@ -38,13 +39,13 @@ export const FormLogin = () => {
                 default:
                     var {validation, message} = {validation:false,message: "El tipo de documento elegido no es correcto"};
             }
-
+            console.log(validation);
             if (validation){
+                
                 let loginData = {
                     num_doc: e.target.docUser.value,
                     password: e.target.passwordUser.value,
                 }
-
                 let Metadatos = {
                     method: 'POST',
                     body: JSON.stringify(loginData),

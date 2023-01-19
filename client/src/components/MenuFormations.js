@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import formacion from '../img/formacion.jpg'
 
 export const MenuFormations = () => {
 
@@ -35,6 +36,7 @@ export const MenuFormations = () => {
                     {formations ? formations.map((formation, i) => (
                     
                             <div key={i} className="boxAllFormation">
+                                <img src={formacion} className='imgLogin3' alt="Logo Cruz Roja" />
                                 <p className='pFormation'>{formation.nombre} </p>
                             </div>
 

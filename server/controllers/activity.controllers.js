@@ -110,44 +110,7 @@ const activity = {
     }finally{
       await connection.close(con);
     }
-  },
-
-    /**
-   * Guarda el producto como favorito
-   * @param {*} req 
-   * @param {*} res 
-   */
-    saveFavorite: async (req,res) => {
-      // try{
-      //   const fk_id_product = req.body.fk_id_product;
-      //   const fk_id_user = session.get_id_from_cookie(req);
-      //   await mongoose.conn();
-      //   console.log(fk_id_product);
-      //   const hola = await favoriteModel.create({fk_id_user, fk_id_product});
-      //   console.log(hola);
-      //   res.json(true);
-      // }catch(e){
-      //   console.log(e);
-      //   res.json(false);
-      // }
-    },
-
-    deleteFavorite: async (req,res) => {
-      // try{
-      //   const fk_id_product = req.body.fk_id_product;
-      //   const fk_id_user = session.get_id_from_cookie(req);
-      //   await mongoose.conn();
-      //   console.log(fk_id_product);
-      //   const hola = await favoriteModel.create({fk_id_user, fk_id_product});
-      //   console.log(hola);
-      //   res.json(true);
-      // }catch(e){
-      //   console.log(e);
-      //   res.json(false);
-      // }
-    },
-
-
+  }
 }
 
 module.exports = activity;
