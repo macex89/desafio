@@ -1,5 +1,5 @@
 # Building the api
-FROM python:3.7.16-alpine3.17
+FROM python:3.7.16-slim
 WORKDIR /opt/api
 COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
